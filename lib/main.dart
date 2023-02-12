@@ -1,7 +1,14 @@
-import 'package:first_app/ChatPage.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:first_app/ChatHomePage.dart';
+import 'package:first_app/EmailLoginPage.dart';
 import 'package:flutter/material.dart';
+import 'firebase_options.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -17,7 +24,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.teal,
       ),
-      home: const ChatPage(),
+      home: const EmailLoginPage(),
     );
   }
 }

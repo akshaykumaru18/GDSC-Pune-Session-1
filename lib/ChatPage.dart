@@ -1,69 +1,53 @@
 import 'package:flutter/material.dart';
 
-class ChatPage extends StatefulWidget {
-  const ChatPage({Key? key}) : super(key: key);
+class ChatDescriptionPage extends StatefulWidget {
+  String name;
+  String description;
+  String message;
+
+  ChatDescriptionPage(
+      {required this.name,
+      required this.message,
+      required this.description,
+      Key? key})
+      : super(key: key);
 
   @override
-  State<ChatPage> createState() => _ChatPageState();
+  State<ChatDescriptionPage> createState() => _ChatDescriptionPageState();
 }
 
-class _ChatPageState extends State<ChatPage> {
+class _ChatDescriptionPageState extends State<ChatDescriptionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'WhatsApp',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        ),
-        actions: const [Icon(Icons.search), Icon(Icons.more_vert_outlined)],
+        title: Text(widget.name),
       ),
-      body: ListView(
+      body: Row(
         children: [
-          ListTile(
-            leading: const Icon(Icons.person),
-            title: const Text('Akshay',style: TextStyle(fontSize: 22),),
-            subtitle: const Text('Net is slow',style: TextStyle(fontSize: 18),),
-            trailing: Column(
-              children: const [
-                Text('Now'),
-                Text('1'),
+          Expanded(
+            flex: 2,
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text(widget.message,style: const TextStyle(
+                fontSize: 25,
+                color: Colors.red,
 
-
-              ],
+              ),),
             ),
-
           ),
-          ListTile(
-            leading: const Icon(Icons.person),
-            title: const Text('Akshay',style: TextStyle(fontSize: 22),),
-            subtitle: const Text('Net is slow',style: TextStyle(fontSize: 18),),
-            trailing: Column(
-              children: const [
-                Text('Now'),
-                Text('1'),
-
-
-              ],
+          Expanded(
+            flex: 18,
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 50,horizontal: 60),
+              child: Text(widget.description,style: TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.bold
+              ),),
             ),
-
-          ),
-          ListTile(
-            leading: const Icon(Icons.person),
-            title: const Text('Akshay',style: TextStyle(fontSize: 22),),
-            subtitle: const Text('Net is slow',style: TextStyle(fontSize: 18),),
-            trailing: Column(
-              children: const [
-                Text('Now'),
-                Text('1'),
-
-
-              ],
-            ),
-
-          ),
+          )
         ],
-      ),
+      )
     );
   }
 }
